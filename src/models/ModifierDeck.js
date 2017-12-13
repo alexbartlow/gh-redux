@@ -1,10 +1,12 @@
 import Immutable from 'immutable';
+import { Accordion } from 'react-bootstrap';
 
 const proto = Immutable.Record({
   deck: Immutable.List([]),
   drawn: Immutable.List([]),
   discard: Immutable.List([])
 });
+
 
 export default class ModifierDeck extends proto {
   shuffleDeck() {

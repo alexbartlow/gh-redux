@@ -1,7 +1,9 @@
+// @ts-check
 import {createStore} from 'redux';
 import {ModifierDeckFactory} from './config/modifiers';
 import Immutable from 'immutable';
 import ModifierDeck from "./models/ModifierDeck";
+import ApplicationState from "./models/ApplicationState";
 
 export const Actions = {
    chooseScenario: (payload) => ({ type: 'scenario/pick', payload }),
@@ -9,21 +11,21 @@ export const Actions = {
    drawModifierCards: (payload) => ({ type: 'modifier/draw', ...payload}),
 };
 
-const initialState = Immutable.fromJS({
-  scenario: 5,
-  modifiers: new ModifierDeck({deck: ModifierDeckFactory()})
-});
 
-const reducer = (state = initialState, action) => {
+/**
+ * @param {ApplicationState} state 
+ * @param {Object} action 
+ */
+const reducer = (state = new ApplicationState(), action) => {
   switch(action.type) {
     case 'modifier/shuffle':
-      return state.set('modifiers', state.get('modifiers').shuffleDeck());
+      return state.updateModifiers((m) => m.shuffleDeck() );
     case 'modifier/draw':
-      return state.set('modifiers', state.get('modifiers').drawCards(action.numberOfCards || 1));
+      return state.updateModifiers((m) => m.drawCards(action.numberOfCards));
     default:
       return state;
   }
 }
 
-export const Store = () => createStore(reducer, initialState);
+export const Store = () => createStore(reducer, new ApplicationState());
 export default Store;
