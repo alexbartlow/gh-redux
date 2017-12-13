@@ -10,6 +10,16 @@
 .Modifiers--drawn {
 }
 
+.Modifiers--stack {
+  height: 140px;
+}
+
+.Modifiers--stack img {
+  border-radius: 10px;
+  border: 5px solid black;
+  max-width: 200px;
+}
+
 .Modifiers--drawn img {
   max-width: 200px;
   transition: rotate(30deg) ease-in;
@@ -26,6 +36,7 @@
 }
 
 .Modifiers--card.flipped .Modifiers--flipper {
+  transform-origin: top right;
   transform: rotateY(180deg);
   transition: 0.6s;
 }
@@ -44,8 +55,16 @@
 }
 
 .Modifiers--card-back {
-  z-index: 2;
+  z-index: 3;
   transform: rotateY(0deg);
+}
+
+.Modifiers--card-front {
+  z-index: 2;
+}
+
+.Modifiers--card-back.static {
+  z-index: -1;
 }
 
 .Modifiers--card-front {
