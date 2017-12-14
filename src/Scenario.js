@@ -1,6 +1,7 @@
 import {rx, React, PropTypes, Actions } from './ComponentDeps';
 import { Row, Grid, Col} from 'react-bootstrap';
 import ModifierDeck from "./models/ModifierDeck";
+<<<<<<< HEAD
 import Immutable from 'immutable';
 
 const MonsterGroup = rx(class extends React.PureComponent {
@@ -29,6 +30,9 @@ const MonsterGroup = rx(class extends React.PureComponent {
     )
   }
 });
+=======
+import ApplicationState from './models/ApplicationState';
+>>>>>>> 8c60774eaa271f6c8457efd2528a362535af4e87
 
 export default rx(class extends React.PureComponent {
   static propTypes = {
@@ -40,11 +44,11 @@ export default rx(class extends React.PureComponent {
     shuffleCards: PropTypes.func.isRequired
   };
 
-  static mapStateToProps(state, ownProps) {
+  static mapStateToProps(/** @type {ApplicationState} */ state, ownProps) {
     return {
-      scenario: state.get("scenario"),
-      modifiers: state.get("modifiers"),
-      monsterGroups: state.get("monsterGroups")
+      scenario: state.scenario,
+      modifiers: state.modifiers,
+      monsterGroups: state.monsterGroups
     }
   }
 
@@ -112,3 +116,4 @@ export default rx(class extends React.PureComponent {
     );
   }
 });
+
