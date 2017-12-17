@@ -1,7 +1,7 @@
 import {rx, React, PropTypes, Actions } from './ComponentDeps';
 import { Row, Grid, Col} from 'react-bootstrap';
 import ModifierDeck from "./models/ModifierDeck";
-<<<<<<< HEAD
+import ApplicationState from './models/ApplicationState';
 import Immutable from 'immutable';
 
 const MonsterGroup = rx(class extends React.PureComponent {
@@ -30,9 +30,6 @@ const MonsterGroup = rx(class extends React.PureComponent {
     )
   }
 });
-=======
-import ApplicationState from './models/ApplicationState';
->>>>>>> 8c60774eaa271f6c8457efd2528a362535af4e87
 
 export default rx(class extends React.PureComponent {
   static propTypes = {
